@@ -112,7 +112,7 @@
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='picking_type_id']" position="after">
+            <xpath expr="//field[@name='invoice_state']" position="after">
                 <field name="wave_id"/>
             </xpath>
             <xpath expr="//field[@name='move_type']" position="after">
@@ -120,7 +120,7 @@
             </xpath>
         </field>
         </record>
-        <record model="ir.ui.view" id="view_stock_picking_wave_tree_inherit">
+        <!--record model="ir.ui.view" id="view_stock_picking_wave_tree_inherit">
         <field name="name">stock.picking.wave.inherit.tree</field>
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.vpicktree"/>
@@ -130,8 +130,8 @@
                 <field name="wave_id"/>
             </xpath>
         </field>
-        </record>
-        <record model="ir.ui.view" id="view_stock_picking_wave_search_inherit">
+        </record-->
+        <!--record model="ir.ui.view" id="view_stock_picking_wave_search_inherit">
         <field name="name">stock.picking.wave.inherit.search</field>
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_internal_search"/>
@@ -143,7 +143,7 @@
                     <field name="wave_type_ids"/>
             </xpath>
         </field>
-        </record>
+        </record-->
 
         <record model="ir.ui.view" id="partner_wave_type">
             <field name="name">partner.wave.type.view</field>
