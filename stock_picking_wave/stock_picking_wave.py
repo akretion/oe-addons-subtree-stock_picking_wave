@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from openerp.osv import fields, osv
+from openerp.osv import fields, osv, orm
 from openerp.tools.translate import _
 
 class stock_picking_wave(osv.osv):
@@ -76,6 +76,22 @@ class stock_picking(osv.osv):
         'wave_id': fields.many2one('stock.picking.wave', 'Picking Wave', help='Picking wave associated to this picking'),
         'wave_type_ids': fields.related('partner_id', 'wave_type_ids', type="many2many", relation='stock.picking.wave.type', string='Picking Wave Type'),
     }
+
+class StockPickingIn(orm.Model):
+    _inherit = 'stock.picking.in'
+
+    def __init__(self, pool, cr):
+        super(StockPickingIn, self).__init__(pool, cr)
+        self._columns['wave_id'] = self.pool['stock.picking']._columns['wave_id']
+        self._columns['wave_type_ids'] = self.pool['stock.picking']._columns['wave_type_ids']
+
+class StockPickingOut(orm.Model):
+    _inherit = 'stock.picking.out'
+
+    def __init__(self, pool, cr):
+        super(StockPickingOut, self).__init__(pool, cr)
+        self._columns['wave_id'] = self.pool['stock.picking']._columns['wave_id']
+        self._columns['wave_type_ids'] = self.pool['stock.picking']._columns['wave_type_ids']
 
 class res_partner(osv.osv):
     _inherit = 'res.partner'

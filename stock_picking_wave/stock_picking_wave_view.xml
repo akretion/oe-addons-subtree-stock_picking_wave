@@ -107,43 +107,114 @@
         </record>
         <menuitem action="action_picking_wave" id="menu_action_picking_wave" parent="stock.menu_stock_warehouse_mgmt" sequence="30"/>
 
+    <!-- Internal Pickings -->
         <record model="ir.ui.view" id="view_stock_picking_wave_inherit">
         <field name="name">stock.picking.wave.inherit.form</field>
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='invoice_state']" position="after">
-                <field name="wave_id"/>
-            </xpath>
             <xpath expr="//field[@name='move_type']" position="after">
                 <field name="wave_type_ids" widget="many2many_tags"/>
+                <field name="wave_id"/>
             </xpath>
         </field>
         </record>
-        <!--record model="ir.ui.view" id="view_stock_picking_wave_tree_inherit">
+        <record model="ir.ui.view" id="view_stock_picking_wave_tree_inherit">
         <field name="name">stock.picking.wave.inherit.tree</field>
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.vpicktree"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='picking_type_id']" position="after">
-                <field name="wave_type_ids" invisible="1"/>
+            <xpath expr="//field[@name='state']" position="after">
                 <field name="wave_id"/>
             </xpath>
         </field>
-        </record-->
-        <!--record model="ir.ui.view" id="view_stock_picking_wave_search_inherit">
+        </record>
+        <record model="ir.ui.view" id="view_stock_picking_wave_search_inherit">
         <field name="name">stock.picking.wave.inherit.search</field>
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_internal_search"/>
         <field name="arch" type="xml">
-            <xpath expr="//filter[@string='Picking Type']" position="after">
+            <xpath expr="//filter[@string='Journal']" position="after">
                 <filter string="Wave" domain="[]" context="{'group_by':'wave_id'}"/>
             </xpath>
-            <xpath expr="//field[@name='picking_type_id']" position="after">
+            <xpath expr="//field[@name='product_id']" position="after">
                     <field name="wave_type_ids"/>
             </xpath>
         </field>
-        </record-->
+        </record>
+
+    <!-- Incoming Pickings -->
+        <record model="ir.ui.view" id="view_stock_picking_in_wave_inherit">
+        <field name="name">stock.picking.wave.inherit.in.form</field>
+        <field name="model">stock.picking.in</field>
+        <field name="inherit_id" ref="stock.view_picking_in_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='move_type']" position="after">
+                <field name="wave_type_ids" widget="many2many_tags"/>
+                <field name="wave_id"/>
+            </xpath>
+        </field>
+        </record>
+        <record model="ir.ui.view" id="view_stock_picking_in_wave_tree_inherit">
+        <field name="name">stock.picking.wave.inherit.in.tree</field>
+        <field name="model">stock.picking.in</field>
+        <field name="inherit_id" ref="stock.view_picking_in_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="wave_id"/>
+            </xpath>
+        </field>
+        </record>
+        <record model="ir.ui.view" id="view_stock_picking_in_wave_search_inherit">
+        <field name="name">stock.picking.in.wave.inherit.search</field>
+        <field name="model">stock.picking.in</field>
+        <field name="inherit_id" ref="stock.view_picking_in_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@string='Journal']" position="after">
+                <filter string="Wave" domain="[]" context="{'group_by':'wave_id'}"/>
+            </xpath>
+            <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="wave_type_ids"/>
+            </xpath>
+        </field>
+        </record>
+
+    <!-- Outgoing Pickings -->
+        <record model="ir.ui.view" id="view_stock_picking_out_wave_inherit">
+        <field name="name">stock.picking.wave.inherit.out.form</field>
+        <field name="model">stock.picking.out</field>
+        <field name="inherit_id" ref="stock.view_picking_out_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='move_type']" position="after">
+                <field name="wave_type_ids" widget="many2many_tags"/>
+                <field name="wave_id"/>
+            </xpath>
+        </field>
+        </record>
+        <record model="ir.ui.view" id="view_stock_picking_out_wave_tree_inherit">
+        <field name="name">stock.picking.wave.inherit.out.tree</field>
+        <field name="model">stock.picking.out</field>
+        <field name="inherit_id" ref="stock.view_picking_out_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="wave_id"/>
+            </xpath>
+        </field>
+        </record>
+        <record model="ir.ui.view" id="view_stock_picking_out_wave_search_inherit">
+        <field name="name">stock.picking.out.wave.inherit.search</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_out_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@string='Journal']" position="after">
+                <filter string="Wave" domain="[]" context="{'group_by':'wave_id'}"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="wave_type_ids"/>
+            </xpath>
+        </field>
+        </record>
+
 
         <record model="ir.ui.view" id="partner_wave_type">
             <field name="name">partner.wave.type.view</field>
