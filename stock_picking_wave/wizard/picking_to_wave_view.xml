@@ -36,5 +36,13 @@
             view_mode="form" target="new" view_type="form"
             />
 
+        <act_window id="action_picking_to_wave_out"
+            multi="True"
+            key2="client_action_multi" name="Add to Wave"
+            res_model="stock.picking.to.wave" src_model="stock.picking.out"
+            view_mode="form" target="new" view_type="form"
+            />
+
+
     </data>
 </openerp>
